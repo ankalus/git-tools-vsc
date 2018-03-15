@@ -1,0 +1,75 @@
+{
+    "name": "git-tools",
+    "displayName": "Git Tools",
+    "description": "Simple tool to open Git Gui, Gitk and Git Blame.",
+    "version": "1.0.0",
+    "publisher": "ankalus",
+    "repository" : {
+        "type" : "git",
+        "url" : "https://github.com/ankalus/git-tools-vsc"
+    },
+    "engines": {
+        "vscode": "^1.20.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.gitK",
+        "onCommand:extension.gitKCurrentFile",
+        "onCommand:extension.gitGui",
+        "onCommand:extension.gitGuiBlame",
+        "onCommand:extension.gitCurrentCheckout"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.gitK",
+                "title": "Git Tools: GitK"
+            },
+            {
+                "command": "extension.gitKCurrentFile",
+                "title": "Git Tools: GitK Current File"
+            },
+            {
+                "command": "extension.gitGui",
+                "title": "Git Tools: Git Gui"
+            },
+            {
+                "command": "extension.gitGuiBlame",
+                "title": "Git Tools: Git Gui Blame"
+            },
+            {
+                "command": "extension.gitCurrentCheckout",
+                "title": "Git Tools: Git checkout current file"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "Git Tools configuration",
+            "properties": {
+                "gitTools.gitkArgs": {
+                    "type": "string",
+                    "default": " --all",
+                    "scope": "window",
+                    "description": "Arguments for gitk"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.6",
+        "tslint": "^5.8.0",
+        "@types/node": "^7.0.43",
+        "@types/mocha": "^2.2.42"
+    }
+}
